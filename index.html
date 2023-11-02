@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang=f="style.css">
-    <script type="text/javascript">
-
-    </script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onLoad="ButtonText()">
     <div class="BG">
         <div class="Main">
             <div>
-                <h1>Question 1/10</h1>
+                <h1>Question 1/5</h1>
                 <p class="Question">Question number first, so what is programming?</p>
-                <div class="ButtonCont">
-                    <button>First</button>
-                    <button>Second</button>
-                    <button>Third</button>
-                    <button>Fourth</button>
+                <div class="ButtonCont" id="ButtonCont">
+                    <button onClick="CheckAnswer(0);">First</button>
+                    <button onClick="CheckAnswer(1);">Second</button>
+                    <button onClick="CheckAnswer(2);">Third</button>
+                    <button onClick="CheckAnswer(3);">Fourth</button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

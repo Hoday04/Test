@@ -1,4 +1,4 @@
-let questarr = ["Which of these is a vegetable?The question has several answers","In what year did WW1 start?","Where is Norway located?","25+3=?","Where can I buy the cheapest flights?"];
+let questarr = ["Which of these is a vegetable?","In what year did WW1 start?","Where is Norway located?","25+3=?","Where can I buy the cheapest flights?"];
 let FAarr = [["Pineapple"],["1918","1913","1917"],["America","Africa","Asia"],["26","27","29"],["Kufar","Wildberries","Ozon"]];
 let RAarr = [["Tomato","Cucumber","Carrot"],["1914"],["Europe"],["28"],["Aviasales"]];
 let temp=0;
@@ -22,7 +22,7 @@ function IsItFinish(){
             arr[i].hidden = true;
         } 
         Qnumber.textContent = "Finish!";
-        quest.textContent = "Right answers = "+RghtAnswers;
+        quest.textContent = "Right answers = "+RghtAnswers.toFixed(2);
         let replayBut = document.createElement("button");
         replayBut.textContent = "Replay";
         ButtonCont.appendChild(replayBut);
@@ -31,7 +31,9 @@ function IsItFinish(){
     }
     else{
         Qnumber.textContent = "Question "+(temp+1)+"/"+questarr.length;
-        quest.textContent = questarr[temp];
+        if(colright>1){
+            quest.textContent = questarr[temp]+"The question has several answers.";
+        }
     }
 }
 

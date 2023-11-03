@@ -1,8 +1,11 @@
-let questarr = ["What is the capital of Germany?","In what year did WW1 start?","Where is Norway located?","25+3=?","Where can I buy the cheapest flights?"];
-let answerarr = [["Berlin","Cologne","Augsburg","Hamburg"],["1914","1918","1913","1917"],["Europe","America","Africa","Asia"],["28","26","27","29"],["Aviasales","Kufar","Wildberries","Ozon"]];
-let right;
+let questarr = ["Which of these is a vegetable?The question has several answers","In what year did WW1 start?","Where is Norway located?","25+3=?","Where can I buy the cheapest flights?"];
+let FAarr = [["Pineapple"],["1918","1913","1917"],["America","Africa","Asia"],["26","27","29"],["Kufar","Wildberries","Ozon"]];
+let RAarr = [["Tomato","Cucumber","Carrot"],["1914"],["Europe"],["28"],["Aviasales"]];
 let temp=0;
-let j=1;
+let right;
+let colright = RAarr[temp].length;
+let tempra =0;
+let j=0;
 let RghtAnswers = 0;
 let ButtonCont = document.getElementById("ButtonCont");
 let arr = document.querySelectorAll("button");
@@ -16,15 +19,13 @@ function IsItFinish(){
     let quest = document.querySelector("p");
     if(temp===5){     
         for(let i=0;i<4;i++){
-            arr[i].disabled = true;
+            arr[i].hidden = true;
         } 
         Qnumber.textContent = "Finish!";
         quest.textContent = "Right answers = "+RghtAnswers;
         let replayBut = document.createElement("button");
         replayBut.textContent = "Replay";
-        replayBut.id = "replay";
         ButtonCont.appendChild(replayBut);
-        ButtonCont.style.border = "2px solid black";
         temp=0;
         replayBut.onclick = function ReplayQuiz(){Replay();};        
     }
@@ -36,19 +37,23 @@ function IsItFinish(){
 
 function ButtonText(){
     IsItFinish();
-    right = Math.floor(Math.random() * 4)
+    for(let i=0;i<colright;i++){
+        right = Math.floor(Math.random() * 4);
+        while(arr[right].value === "right"){
+            right = Math.floor(Math.random() * 4);
+        }
+        arr[right].textContent = RAarr[temp][i];
+        arr[right].value = "right";
+    }    
     for(let i=0;i<4;i++){
         arr[i].style.backgroundColor = "DarkSlateGray";
         arr[i].disabled = false;
-        if(i===right){
-            arr[i].textContent = answerarr[temp][0];
-        }
-        else{
-            arr[i].textContent = answerarr[temp][j];
+        if(arr[i].value !== "right"){
+            arr[i].textContent = FAarr[temp][j];
             j++;
         }
     }
-    j=1;
+    j=0;
     temp++;
 }
 
@@ -66,16 +71,21 @@ function nextBut(){
 }
 
 function CheckAnswer(number){
-    if(number===right){
-        RghtAnswers++;
-        arr[right].style.backgroundColor = "green";
-        nextBut();
+    if(arr[number].value==="right"){
+        RghtAnswers+=1/colright;
+        arr[number].style.backgroundColor = "green";
     }
     else{
         arr[number].style.backgroundColor = "red";
+    }
+    tempra++;
+    if(tempra===colright){
         nextBut();
-    }
-    for(let i=0;i<4;i++){
-        arr[i].disabled = true;
-    }
+        for(let i=0;i<4;i++){
+            arr[i].disabled = true;
+            arr[i].value = "false";
+        }
+        tempra=0;   
+        colright = RAarr[temp].length;
+    }  
 }

@@ -23,7 +23,7 @@ function Timer(){
             ButtonText();
         }
         timer.textContent = tick;
-    },300);
+    },1000);
 }
 
 function Replay(){

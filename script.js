@@ -83,14 +83,19 @@ function CheckAnswer(number){
     else{
         arr[number].style.backgroundColor = "red";
     }
+    arr[number].disabled = true;
     tempra++;
     if(tempra===colright){
         nextBut();
-        for(let i=0;i<4;i++){
-            arr[i].disabled = true;
-            arr[i].value = "false";
-        }
-        tempra=0;   
-        colright = RAarr[temp].length;
+        ClearBut();
     }  
+}
+
+function ClearBut(){
+    for(let i=0;i<4;i++){
+        arr[i].disabled = true;
+        arr[i].value = "false";
+    }
+    tempra=0;   
+    colright = RAarr[temp].length;
 }

@@ -34,6 +34,9 @@ function IsItFinish(){
         if(colright>1){
             quest.textContent = questarr[temp]+"The question has several answers.";
         }
+        else{
+            quest.textContent = questarr[temp];
+        }
     }
 }
 

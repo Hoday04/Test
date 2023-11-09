@@ -2,13 +2,29 @@ let questarr = ["Which of these is a vegetable?","In what year did WW1 start?","
 let FAarr = [["Pineapple"],["1918","1913","1917"],["America","Africa","Asia"],["26","27","29"],["Kufar","Wildberries","Ozon"]];
 let RAarr = [["Tomato","Cucumber","Carrot"],["1914"],["Europe"],["28"],["Aviasales"]];
 let temp=0;
-let right;
 let colright = RAarr[temp].length;
 let tempra =0;
-let j=0;
 let RghtAnswers = 0;
 let ButtonCont = document.getElementById("ButtonCont");
 let arr = document.querySelectorAll("button");
+let tick=10;
+
+function Timer(){
+    ptime = setInterval ((x) => 
+    {  
+        let timer = document.getElementById("time");
+        if(tick>1){
+            tick--;
+        }
+        else{
+            tick=10;
+            IsItFinish();
+            ClearBut();
+            ButtonText();
+        }
+        timer.textContent = tick;
+    },300);
+}
 
 function Replay(){
     location.reload();
@@ -17,7 +33,7 @@ function Replay(){
 function IsItFinish(){    
     let Qnumber = document.querySelector("h1");
     let quest = document.querySelector("p");
-    if(temp===5){     
+    if(temp===5){   
         for(let i=0;i<4;i++){
             arr[i].hidden = true;
         } 
@@ -26,8 +42,11 @@ function IsItFinish(){
         let replayBut = document.createElement("button");
         replayBut.textContent = "Replay";
         ButtonCont.appendChild(replayBut);
-        temp=0;
-        replayBut.onclick = function ReplayQuiz(){Replay();};        
+        replayBut.onclick = function ReplayQuiz(){Replay();};  
+        let timer = document.getElementById("time");
+        clearInterval(ptime);
+        timer.remove();
+        removeBut();  
     }
     else{
         Qnumber.textContent = "Question "+(temp+1)+"/"+questarr.length;
@@ -42,6 +61,7 @@ function IsItFinish(){
 
 function ButtonText(){
     IsItFinish();
+    let right;
     for(let i=0;i<colright;i++){
         right = Math.floor(Math.random() * 4);
         while(arr[right].value === "right"){
@@ -50,6 +70,7 @@ function ButtonText(){
         arr[right].textContent = RAarr[temp][i];
         arr[right].value = "right";
     }    
+    let j=0;
     for(let i=0;i<4;i++){
         arr[i].style.backgroundColor = "DarkSlateGray";
         arr[i].disabled = false;
@@ -58,13 +79,16 @@ function ButtonText(){
             j++;
         }
     }
-    j=0;
     temp++;
 }
 
 function removeBut(){
     let but = document.getElementById("next");
     but.remove();
+    tick=10;
+    let timer = document.getElementById("time");
+    timer.textContent = tick;
+    Timer();
 }
 
 function nextBut(){
@@ -86,6 +110,7 @@ function CheckAnswer(number){
     arr[number].disabled = true;
     tempra++;
     if(tempra===colright){
+        clearInterval(ptime);
         nextBut();
         ClearBut();
     }  

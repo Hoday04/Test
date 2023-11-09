@@ -6,12 +6,13 @@
     <title>Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onLoad="ButtonText()">
+<body onLoad="ButtonText(); Timer();">
     <div class="BG">
         <div class="Main" id="Main">
             <div>
                 <h1>Question 1/5</h1>
-                <p class="Question">Question number first, so what is programming?</p>
+                <p id="question" class="Question">Question number first, so what is programming?</p>
+                <p id="time">10</p>
                 <div class="ButtonCont" id="ButtonCont">
                     <button onClick="CheckAnswer(0);">First</button>
                     <button onClick="CheckAnswer(1);">Second</button>
@@ -21,6 +22,6 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
+<script src="script.js"></script>
 </html>

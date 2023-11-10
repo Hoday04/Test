@@ -6,18 +6,20 @@
     <title>Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onLoad="ButtonText(); Timer();">
-    <div class="BG">
+<body onLoad="ButtonText(); Timer(); CheckTheme()">
+    <div class="BG" id="BG">
+        <input type="checkbox" id="switch" class="checkbox" onClick="LightTheme();">
+        <label for="switch" class="toggle"></label>
         <div class="Main" id="Main">
             <div>
                 <h1>Question 1/5</h1>
                 <p id="question" class="Question">Question number first, so what is programming?</p>
                 <p id="time">10</p>
                 <div class="ButtonCont" id="ButtonCont">
-                    <button onClick="CheckAnswer(0);">First</button>
-                    <button onClick="CheckAnswer(1);">Second</button>
-                    <button onClick="CheckAnswer(2);">Third</button>
-                    <button onClick="CheckAnswer(3);">Fourth</button>
+                    <button class="dark" onClick="CheckAnswer(0);">First</button>
+                    <button class="dark" onClick="CheckAnswer(1);">Second</button>
+                    <button class="dark" onClick="CheckAnswer(2);">Third</button>
+                    <button class="dark" onClick="CheckAnswer(3);">Fourth</button>
                 </div>
             </div>
         </div>

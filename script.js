@@ -8,6 +8,7 @@ let RghtAnswers = 0;
 let ButtonCont = document.getElementById("ButtonCont");
 let arr = document.querySelectorAll("button");
 let tick=10;
+let bbgcolor = "DarkSlateGray";
 
 function Timer(){
     ptime = setInterval ((x) => 
@@ -32,7 +33,7 @@ function Replay(){
 
 function IsItFinish(){    
     let Qnumber = document.querySelector("h1");
-    let quest = document.querySelector("p");
+    let quest = document.getElementById("question");
     if(temp===5){   
         for(let i=0;i<4;i++){
             arr[i].hidden = true;
@@ -40,7 +41,13 @@ function IsItFinish(){
         Qnumber.textContent = "Finish!";
         quest.textContent = "Right answers = "+RghtAnswers.toFixed(2);
         let replayBut = document.createElement("button");
-        replayBut.textContent = "Replay";
+        replayBut.textContent = "Replay";    
+        if(bbgcolor==="Sienna"){
+            replayBut.style.backgroundColor = "Sienna";
+        }
+        else{
+            replayBut.style.backgroundColor = "DarkSlateGray";
+        }
         ButtonCont.appendChild(replayBut);
         replayBut.onclick = function ReplayQuiz(){Replay();};  
         let timer = document.getElementById("time");
@@ -72,7 +79,7 @@ function ButtonText(){
     }    
     let j=0;
     for(let i=0;i<4;i++){
-        arr[i].style.backgroundColor = "DarkSlateGray";
+        arr[i].style.backgroundColor = bbgcolor;
         arr[i].disabled = false;
         if(arr[i].value !== "right"){
             arr[i].textContent = FAarr[temp][j];
@@ -96,10 +103,17 @@ function nextBut(){
     but.textContent = "Next";
     but.onclick = function Next(){ButtonText();removeBut();};
     but.id = "next";
+    if(bbgcolor==="Sienna"){
+        but.style.backgroundColor = "Sienna";
+    }
+    else{
+        but.style.backgroundColor = "DarkSlateGray";
+    }
     ButtonCont.appendChild(but);
 }
 
 function CheckAnswer(number){
+    let arr = document.querySelectorAll("button");
     if(arr[number].value==="right"){
         RghtAnswers+=1/colright;
         arr[number].style.backgroundColor = "green";
@@ -123,4 +137,26 @@ function ClearBut(){
     }
     tempra=0;   
     colright = RAarr[temp].length;
+}
+
+function LightTheme(){
+    let bg = document.getElementById("BG");
+    let theme = document.getElementById("switch");
+    if(theme.checked){
+        bg.classList.toggle('BG');
+        bg.classList.toggle('light-theme');
+        bbgcolor = "Sienna";
+    }
+    else{
+        bg.classList.toggle('light-theme');
+        bg.classList.toggle('BG');
+        bbgcolor = "DarkSlateGray";
+    }
+    let arr = document.querySelectorAll("button");
+    for(let i=0;i<arr.length;i++){
+        if(arr[i].style.backgroundColor==="red" || arr[i].style.backgroundColor==="green"){}
+        else{
+            arr[i].style.backgroundColor = bbgcolor;
+        }
+    }
 }

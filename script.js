@@ -34,12 +34,12 @@ function Replay(){
 function IsItFinish(){    
     let Qnumber = document.querySelector("h1");
     let quest = document.getElementById("question");
-    if(temp===5){   
+    if(temp===questarr.length){   
         for(let i=0;i<4;i++){
             arr[i].hidden = true;
         } 
         Qnumber.textContent = "Finish!";
-        quest.textContent = "Right answers = "+RghtAnswers.toFixed(2);
+        quest.textContent = "Right answers = "+RghtAnswers.toFixed();
         let replayBut = document.createElement("button");
         replayBut.textContent = "Replay";    
         if(bbgcolor==="Sienna"){

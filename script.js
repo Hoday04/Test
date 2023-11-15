@@ -1,14 +1,9 @@
-let questarr = ["Which of these is a vegetable?","In what year did WW1 start?","Where is Norway located?","25+3=?","Where can I buy the cheapest flights?"];
-let FAarr = [["Pineapple"],["1918","1913","1917"],["America","Africa","Asia"],["26","27","29"],["Kufar","Wildberries","Ozon"]];
-let RAarr = [["Tomato","Cucumber","Carrot"],["1914"],["Europe"],["28"],["Aviasales"]];
-let temp=0;
-let colright = RAarr[temp].length;
-let tempra =0;
+let numberOfQuest=0;
+let countRight = questions[numberOfQuest].rightAns.length;
+let clickcount =0;
 let RghtAnswers = 0;
-let ButtonCont = document.getElementById("ButtonCont");
-let arr = document.querySelectorAll("button");
 let tick=10;
-let bbgcolor = "DarkSlateGray";
+let bgcolor = dark;
 
 function Timer(){
     ptime = setInterval ((x) => 
@@ -19,7 +14,7 @@ function Timer(){
         }
         else{
             tick=10;
-            IsItFinish();
+            itsFinish();
             ClearBut();
             ButtonText();
         }
@@ -27,66 +22,76 @@ function Timer(){
     },1000);
 }
 
+function stopTimer(){
+    let timer = document.getElementById("time");
+    clearInterval(ptime);
+    timer.remove();
+}
+
 function Replay(){
     location.reload();
 }
 
-function IsItFinish(){    
-    let Qnumber = document.querySelector("h1");
-    let quest = document.getElementById("question");
-    if(temp===questarr.length){   
-        for(let i=0;i<4;i++){
-            arr[i].hidden = true;
-        } 
-        Qnumber.textContent = "Finish!";
-        quest.textContent = "Right answers = "+RghtAnswers.toFixed();
-        let replayBut = document.createElement("button");
-        replayBut.textContent = "Replay";    
-        if(bbgcolor==="Sienna"){
-            replayBut.style.backgroundColor = "Sienna";
-        }
-        else{
-            replayBut.style.backgroundColor = "DarkSlateGray";
-        }
-        ButtonCont.appendChild(replayBut);
-        replayBut.onclick = function ReplayQuiz(){Replay();};  
-        let timer = document.getElementById("time");
-        clearInterval(ptime);
-        timer.remove();
-        removeBut();  
+function itsFinish(){      
+    for(let i=0;i<4;i++){
+        buttons[i].hidden = true;
+    } 
+    Qnumber.textContent = "Finish!";
+    quest.textContent = "Right answers = "+RghtAnswers.toFixed();
+    let replayBut = document.createElement("button");
+    replayBut.textContent = "Replay";    
+    if(bgcolor===light){
+        replayBut.style.backgroundColor = light;
     }
     else{
-        Qnumber.textContent = "Question "+(temp+1)+"/"+questarr.length;
-        if(colright>1){
-            quest.textContent = questarr[temp]+"The question has several answers.";
-        }
-        else{
-            quest.textContent = questarr[temp];
-        }
+        replayBut.style.backgroundColor = dark;
+    }
+    ButtonCont.appendChild(replayBut);
+    replayBut.onclick = function ReplayQuiz(){Replay();};  
+    stopTimer();
+    removeBut();
+}
+
+function itsNotFinish(){
+    Qnumber.textContent = "Question "+(numberOfQuest+1)+"/"+questions.length;
+    if(countRight>1){
+        quest.textContent = questions[numberOfQuest].question+"The question has several answers.";
+    }
+    else{
+        quest.textContent = questions[numberOfQuest].question;
     }
 }
 
 function ButtonText(){
-    IsItFinish();
+    if(numberOfQuest===questions.length){
+        itsFinish();
+    }
+    else{
+        itsNotFinish();
+    }
     let right;
-    for(let i=0;i<colright;i++){
+    for(let i=0;i<countRight;i++){
         right = Math.floor(Math.random() * 4);
-        while(arr[right].value === "right"){
+        while(buttons[right].value === "right"){
             right = Math.floor(Math.random() * 4);
         }
-        arr[right].textContent = RAarr[temp][i];
-        arr[right].value = "right";
-    }    
+        buttons[right].textContent = questions[numberOfQuest].rightAns[i];
+        buttons[right].value = "right";
+    }   
+    falseButtonText(); 
+    numberOfQuest++;
+}
+
+function falseButtonText(){
     let j=0;
     for(let i=0;i<4;i++){
-        arr[i].style.backgroundColor = bbgcolor;
-        arr[i].disabled = false;
-        if(arr[i].value !== "right"){
-            arr[i].textContent = FAarr[temp][j];
+        buttons[i].style.backgroundColor = bgcolor;
+        buttons[i].disabled = false;
+        if(buttons[i].value !== "right"){
+            buttons[i].textContent = questions[numberOfQuest].falseAns[j];
             j++;
         }
     }
-    temp++;
 }
 
 function removeBut(){
@@ -103,60 +108,55 @@ function nextBut(){
     but.textContent = "Next";
     but.onclick = function Next(){ButtonText();removeBut();};
     but.id = "next";
-    if(bbgcolor==="Sienna"){
-        but.style.backgroundColor = "Sienna";
+    if(bgcolor===light){
+        but.style.backgroundColor = light;
     }
     else{
-        but.style.backgroundColor = "DarkSlateGray";
+        but.style.backgroundColor = dark;
     }
     ButtonCont.appendChild(but);
 }
 
 function CheckAnswer(number){
-    let arr = document.querySelectorAll("button");
-    if(arr[number].value==="right"){
-        RghtAnswers+=1/colright;
-        arr[number].style.backgroundColor = "green";
+    if(buttons[number].value==="right"){
+        RghtAnswers+=1/countRight;
+        buttons[number].style.backgroundColor = "green";
     }
     else{
-        arr[number].style.backgroundColor = "red";
+        buttons[number].style.backgroundColor = "red";
     }
-    arr[number].disabled = true;
-    tempra++;
-    if(tempra===colright){
+    buttons[number].disabled = true;
+    clickcount++;
+    if(clickcount===countRight){
         clearInterval(ptime);
         nextBut();
         ClearBut();
+        clickcount=0;
     }  
 }
 
 function ClearBut(){
     for(let i=0;i<4;i++){
-        arr[i].disabled = true;
-        arr[i].value = "false";
-    }
-    tempra=0;   
-    colright = RAarr[temp].length;
+        buttons[i].disabled = true;
+        buttons[i].value = "false";
+    }   
+    countRight = questions[numberOfQuest].rightAns.length;
 }
 
 function LightTheme(){
-    let bg = document.getElementById("BG");
-    let theme = document.getElementById("switch");
     if(theme.checked){
         bg.classList.toggle('BG');
         bg.classList.toggle('light-theme');
-        bbgcolor = "Sienna";
+        bgcolor = light;
     }
     else{
         bg.classList.toggle('light-theme');
         bg.classList.toggle('BG');
-        bbgcolor = "DarkSlateGray";
+        bgcolor = dark;
     }
-    let arr = document.querySelectorAll("button");
-    for(let i=0;i<arr.length;i++){
-        if(arr[i].style.backgroundColor==="red" || arr[i].style.backgroundColor==="green"){}
-        else{
-            arr[i].style.backgroundColor = bbgcolor;
+    for(let i=0;i<buttons.length;i++){
+        if(buttons[i].style.backgroundColor!=="red" || buttons[i].style.backgroundColor!=="green"){
+            buttons[i].style.backgroundColor = bgcolor;
         }
     }
 }

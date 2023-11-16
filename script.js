@@ -14,7 +14,6 @@ function Timer(){
         }
         else{
             tick=10;
-            itsFinish();
             ClearBut();
             ButtonText();
         }
@@ -39,13 +38,7 @@ function itsFinish(){
     Qnumber.textContent = "Finish!";
     quest.textContent = "Right answers = "+RghtAnswers.toFixed();
     let replayBut = document.createElement("button");
-    replayBut.textContent = "Replay";    
-    if(bgcolor===light){
-        replayBut.style.backgroundColor = light;
-    }
-    else{
-        replayBut.style.backgroundColor = dark;
-    }
+    replayBut.textContent = "Replay";  
     ButtonCont.appendChild(replayBut);
     replayBut.onclick = function ReplayQuiz(){Replay();};  
     stopTimer();
@@ -148,15 +141,30 @@ function LightTheme(){
         bg.classList.toggle('BG');
         bg.classList.toggle('light-theme');
         bgcolor = light;
+        localStorage.setItem("theme","light-theme");
     }
     else{
         bg.classList.toggle('light-theme');
         bg.classList.toggle('BG');
         bgcolor = dark;
+        localStorage.setItem("theme","BG");
     }
     for(let i=0;i<buttons.length;i++){
         if(buttons[i].style.backgroundColor!=="red" || buttons[i].style.backgroundColor!=="green"){
             buttons[i].style.backgroundColor = bgcolor;
         }
+    }
+}
+
+function startSite(){
+    if(localStorage.getItem("theme")==="light-theme"){      
+        theme.checked = true;
+        LightTheme();
+    }
+    else if(localStorage.getItem("theme")==="BG"){
+        bg.classList.toggle('light-theme');
+        bg.classList.toggle('BG');
+        theme.checked = false;
+        LightTheme();
     }
 }

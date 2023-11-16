@@ -38,7 +38,8 @@ function itsFinish(){
     Qnumber.textContent = "Finish!";
     quest.textContent = "Right answers = "+RghtAnswers.toFixed();
     let replayBut = document.createElement("button");
-    replayBut.textContent = "Replay";  
+    replayBut.textContent = "Replay"; 
+    replayBut.style.backgroundColor = bgcolor; 
     ButtonCont.appendChild(replayBut);
     replayBut.onclick = function ReplayQuiz(){Replay();};  
     stopTimer();
@@ -101,12 +102,7 @@ function nextBut(){
     but.textContent = "Next";
     but.onclick = function Next(){ButtonText();removeBut();};
     but.id = "next";
-    if(bgcolor===light){
-        but.style.backgroundColor = light;
-    }
-    else{
-        but.style.backgroundColor = dark;
-    }
+    but.style.backgroundColor = bgcolor; 
     ButtonCont.appendChild(but);
 }
 
@@ -149,9 +145,12 @@ function LightTheme(){
         bgcolor = dark;
         localStorage.setItem("theme","BG");
     }
-    for(let i=0;i<buttons.length;i++){
-        if(buttons[i].style.backgroundColor!=="red" || buttons[i].style.backgroundColor!=="green"){
-            buttons[i].style.backgroundColor = bgcolor;
+    let buts = document.querySelectorAll("button");
+    for(let i=0;i<buts.length;i++){
+        if(buts[i].style.backgroundColor==="red" || buts[i].style.backgroundColor==="green"){
+        }
+        else{
+            buts[i].style.backgroundColor = bgcolor;
         }
     }
 }

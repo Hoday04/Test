@@ -6,7 +6,7 @@
     <title>Test</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="BG" id="BG" onLoad="ButtonText(); Timer();">
+<body class="BG" id="BG" onLoad="startSite(); letsStart();">
     <div>
         <input type="checkbox" id="switch" class="checkbox" onClick="LightTheme();">
         <label for="switch" class="toggle"></label>
@@ -14,7 +14,7 @@
             <div>
                 <h1>Question 1/5</h1>
                 <p id="question" class="Question">Question number first, so what is programming?</p>
-                <p id="time">10</p>
+                <p id="time"></p>
                 <div class="ButtonCont" id="ButtonCont">
                     <button class="dark" onClick="CheckAnswer(0);">First</button>
                     <button class="dark" onClick="CheckAnswer(1);">Second</button>
@@ -25,6 +25,9 @@
         </div>
     </div>
 </body>
+<script src="startMenu.js"></script>
+<script src="theme.js"></script>
+<script src="timer.js"></script>
 <script src="constants.js"></script>
 <script src="script.js"></script>
 </html>

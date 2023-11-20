@@ -4,28 +4,7 @@ let clickcount =0;
 let RghtAnswers = 0;
 let tick=10;
 let bgcolor = dark;
-
-function Timer(){
-    ptime = setInterval ((x) => 
-    {  
-        let timer = document.getElementById("time");
-        if(tick>1){
-            tick--;
-        }
-        else{
-            tick=10;
-            ClearBut();
-            ButtonText();
-        }
-        timer.textContent = tick;
-    },1000);
-}
-
-function stopTimer(){
-    let timer = document.getElementById("time");
-    clearInterval(ptime);
-    timer.remove();
-}
+let complChecked = "Easy";
 
 function Replay(){
     location.reload();
@@ -130,40 +109,4 @@ function ClearBut(){
         buttons[i].value = "false";
     }   
     countRight = questions[numberOfQuest].rightAns.length;
-}
-
-function LightTheme(){
-    if(theme.checked){
-        bg.classList.toggle('BG');
-        bg.classList.toggle('light-theme');
-        bgcolor = light;
-        localStorage.setItem("theme","light-theme");
-    }
-    else{
-        bg.classList.toggle('light-theme');
-        bg.classList.toggle('BG');
-        bgcolor = dark;
-        localStorage.setItem("theme","BG");
-    }
-    let buts = document.querySelectorAll("button");
-    for(let i=0;i<buts.length;i++){
-        if(buts[i].style.backgroundColor==="red" || buts[i].style.backgroundColor==="green"){
-        }
-        else{
-            buts[i].style.backgroundColor = bgcolor;
-        }
-    }
-}
-
-function startSite(){
-    if(localStorage.getItem("theme")==="light-theme"){      
-        theme.checked = true;
-        LightTheme();
-    }
-    else if(localStorage.getItem("theme")==="BG"){
-        bg.classList.toggle('light-theme');
-        bg.classList.toggle('BG');
-        theme.checked = false;
-        LightTheme();
-    }
 }

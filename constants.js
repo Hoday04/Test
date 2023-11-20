@@ -119,9 +119,9 @@ function howItSHard(){
                 rightAns: ["Rake"]
             },
             {
-                question: "The whole world dresses herself?",
+                question: "The whole world dresses, and she is naked?",
                 falseAns: ["Book","Pencil","Blanket"],
-                rightAns: ["Spine"]
+                rightAns: ["Needle"]
             },
             {
                 question: "Five rooms one door?",

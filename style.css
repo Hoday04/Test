@@ -1,5 +1,5 @@
-
     .BG {
+        transform: scale(1);
         background-image:  linear-gradient(to bottom right, CadetBlue, DarkSlateGrey);
         background-size: cover;
         background-attachment: fixed;
@@ -7,6 +7,7 @@
     }
     
     .light-theme {
+        transform: scale(1);
         background-image:  linear-gradient(to bottom right, LightSalmon, Sienna);    
         background-size: cover;
         background-attachment: fixed;
@@ -90,6 +91,7 @@
 
 @media(min-width: 320) AND (max-width: 768){
     .BG {
+        transform: scale(1);
         background-image:  linear-gradient(to bottom right, CadetBlue, DarkSlateGrey);
         background-size: cover;
         background-attachment: fixed;
@@ -97,6 +99,7 @@
     }
     
     .light-theme {
+        transform: scale(1);
         background-image:  linear-gradient(to bottom right, LightSalmon, Sienna);    
         background-size: cover;
         background-attachment: fixed;

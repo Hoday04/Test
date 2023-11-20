@@ -6,8 +6,15 @@ const ButtonCont = document.getElementById("ButtonCont");
 const Qnumber = document.querySelector("h1");
 const quest = document.getElementById("question");
 const buttons = document.querySelectorAll("button");
-const dark = "DarkSlateGray";
-const light = "Sienna";
+const dark = "darkslategray";
+const light = "sienna";
+const colorRightAns = "seagreen";
+const colorFalseAns = "firebrick";
+
+let bgcolor = dark;
+let complChecked = "Easy";
+let colorSelCompl = "teal";
+
 let questions = [
     {
         question: "Which of these is a vegetable?",
@@ -36,7 +43,36 @@ let questions = [
     },
 ];
 function howItSHard(){
-    if(complChecked === "Medium"){
+    if(complChecked === "Easy"){
+        questions = [
+            {
+                question: "Which of these is a vegetable?",
+                falseAns: ["Pineapple"],
+                rightAns: ["Tomato","Cucumber","Carrot"]
+            },
+            {
+                question: "What does seawater taste like?",
+                falseAns: ["Sweet","Fresh","Sour"],
+                rightAns: ["Salty"]
+            },
+            {
+                question: "Where is Norway located?",
+                falseAns: ["America","Africa","Asia"],
+                rightAns: ["Europe"]
+            },
+            {
+                question: "25+3=?",
+                falseAns: ["26","27","29"],
+                rightAns: ["28"]
+            },
+            {
+                question: "Where can I buy the cheapest flights?",
+                falseAns: ["Kufar","Wildberries","Ozon"],
+                rightAns: ["Aviasales"]
+            },
+        ];
+    }
+    else if(complChecked === "Medium"){
         questions = [
             {
                 question: "The largest island on the planet?",
@@ -63,7 +99,7 @@ function howItSHard(){
                 falseAns: ["Elephant","Lion","Bear"],
                 rightAns: ["The blue whale"]
             },
-        ]
+        ];
     }
     else{
         questions = [
@@ -92,6 +128,6 @@ function howItSHard(){
                 falseAns: ["Hat","Trousers","Jacket"],
                 rightAns: ["Gloves"]
             },
-        ]
+        ];
     }
 }

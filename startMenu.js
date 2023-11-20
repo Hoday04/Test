@@ -24,7 +24,7 @@ function makeButton(name){
     let complBut = document.createElement("button");
     complBut.textContent = name; 
     if(name === "Easy"){
-        complBut.style.backgroundColor = "MediumAquamarine"; 
+        complBut.style.backgroundColor = colorSelCompl; 
     }
     else{
         complBut.style.backgroundColor = bgcolor; 
@@ -63,7 +63,7 @@ function complexButClick(but){
     document.getElementById("Easy").style.backgroundColor = bgcolor;
     document.getElementById("Medium").style.backgroundColor = bgcolor;
     document.getElementById("Hard").style.backgroundColor = bgcolor;
-    but.style.backgroundColor = "MediumAquamarine";
+    but.style.backgroundColor = colorSelCompl;
     complChecked = but.id;
     howItSHard();
     countRight = questions[numberOfQuest].rightAns.length;

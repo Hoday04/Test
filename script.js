@@ -3,8 +3,6 @@ let countRight = questions[numberOfQuest].rightAns.length;
 let clickcount =0;
 let RghtAnswers = 0;
 let tick=10;
-let bgcolor = dark;
-let complChecked = "Easy";
 
 function Replay(){
     location.reload();
@@ -88,10 +86,10 @@ function nextBut(){
 function CheckAnswer(number){
     if(buttons[number].value==="right"){
         RghtAnswers+=1/countRight;
-        buttons[number].style.backgroundColor = "green";
+        buttons[number].style.backgroundColor = colorRightAns;
     }
     else{
-        buttons[number].style.backgroundColor = "red";
+        buttons[number].style.backgroundColor = colorFalseAns;
     }
     buttons[number].disabled = true;
     clickcount++;

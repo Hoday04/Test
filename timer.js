@@ -6,9 +6,16 @@ function Timer(){
             tick--;
         }
         else{
-            tick=10;
-            ClearBut();
-            ButtonText();
+            if(numberOfQuest===5){
+                stopTimer();
+                numberOfQuest++;
+                ButtonText();
+            }
+            else{
+                tick=10;
+                ClearBut();
+                ButtonText();
+            }
         }
         timer.textContent = tick;
     },1000);

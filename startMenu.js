@@ -65,6 +65,7 @@ function complexButClick(but){
     document.getElementById("Hard").style.backgroundColor = bgcolor;
     but.style.backgroundColor = colorSelCompl;
     complChecked = but.id;
+    localStorage.setItem("Complex",complChecked);
     howItSHard();
     countRight = questions[numberOfQuest].rightAns.length;
 }

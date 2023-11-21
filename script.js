@@ -5,10 +5,14 @@ let RghtAnswers = 0;
 let tick=10;
 
 function Replay(){
+    localStorage.removeItem("numberOfQuest");
+    localStorage.removeItem("Complex");
+    localStorage.removeItem("RghtAnswers");
     location.reload();
 }
 
-function itsFinish(){      
+function itsFinish(){ 
+    localStorage.removeItem("numberOfQuest");
     for(let i=0;i<4;i++){
         buttons[i].hidden = true;
     } 
@@ -34,7 +38,7 @@ function itsNotFinish(){
 }
 
 function ButtonText(){
-    if(numberOfQuest===questions.length){
+    if(numberOfQuest>=questions.length){
         itsFinish();
     }
     else{
@@ -50,6 +54,7 @@ function ButtonText(){
         buttons[right].value = "right";
     }   
     falseButtonText(); 
+    localStorage.setItem("numberOfQuest",numberOfQuest);
     numberOfQuest++;
 }
 
@@ -72,6 +77,7 @@ function removeBut(){
     let timer = document.getElementById("time");
     timer.textContent = tick;
     Timer();
+    localStorage.setItem("RghtAnswers",RghtAnswers);
 }
 
 function nextBut(){
@@ -107,4 +113,19 @@ function ClearBut(){
         buttons[i].value = "false";
     }   
     countRight = questions[numberOfQuest].rightAns.length;
+}
+
+function whatQuest(){
+    if(localStorage.getItem("numberOfQuest")){
+        numberOfQuest = parseInt(localStorage.getItem("numberOfQuest"));
+        if(localStorage.getItem("Complex")){
+            complChecked = localStorage.getItem("Complex");
+        }
+        if(localStorage.getItem("RghtAnswers")){
+            RghtAnswers = parseInt(localStorage.getItem("RghtAnswers"));
+        }
+        howItSHard();
+        countRight = questions[numberOfQuest].rightAns.length;
+        StartQuiz();
+    }
 }

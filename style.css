@@ -43,6 +43,7 @@
         background-color: DarkSlateGray;
         color: ghostwhite;
         cursor: pointer;
+        border-radius: 8px;
     }
     
     .ButtonCont {

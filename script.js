@@ -71,6 +71,7 @@ function falseButtonText(){
 }
 
 function removeBut(){
+    document.getElementById("progress").value+=(100/questions.length);
     let but = document.getElementById("next");
     but.remove();
     tick=10;
@@ -124,6 +125,7 @@ function whatQuest(){
         if(localStorage.getItem("RghtAnswers")){
             RghtAnswers = parseInt(localStorage.getItem("RghtAnswers"));
         }
+        document.getElementById("progress").value=(100/questions.length)*numberOfQuest;
         howItSHard();
         countRight = questions[numberOfQuest].rightAns.length;
         StartQuiz();

@@ -1,5 +1,5 @@
 function letsStart(){
-    Qnumber.textContent = "Quiz!";
+    qnumber.textContent = "Quiz!";
     quest.hidden = true;
     for(let i=0;i<4;i++){
         buttons[i].hidden = true;
@@ -14,7 +14,7 @@ function letsStart(){
     makeButton("Easy");
     makeButton("Medium");
     makeButton("Hard");
-    ButtonCont.appendChild(startBut);
+    buttonCont.appendChild(startBut);
 }
 
 function makeButton(name){
@@ -32,7 +32,7 @@ function makeButton(name){
     complBut.id = name;
     complBut.onclick = function complexBut(){complexButClick(complBut);}; 
     p.appendChild(complBut);
-    ButtonCont.appendChild(p);
+    buttonCont.appendChild(p);
 }
 
 function StartQuiz(){

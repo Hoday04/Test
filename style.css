@@ -1,19 +1,19 @@
     .BG {
-        background-image:  linear-gradient(to bottom right, CadetBlue, DarkSlateGrey);
+        background-image: linear-gradient(to bottom right, CadetBlue, DarkSlateGrey);
         background-size: cover;
         background-attachment: fixed;
         align-items: center;
     }
-    
+
     .light-theme {
-        background-image:  linear-gradient(to bottom right, LightSalmon, Sienna);    
+        background-image: linear-gradient(to bottom right, LightSalmon, Sienna);
         background-size: cover;
         background-attachment: fixed;
         align-items: center;
     }
-    
+
     .Main {
-        height: 400px;
+        height: 450px;
         width: 500px;
         display: flex;
         margin: 0 auto;
@@ -21,18 +21,33 @@
         background-color: ghostwhite;
         border-radius: 10%;
     }
+
     p {
         font-size: 25px;
         margin: 20px;
         width: 450px;
         height: 50px;
     }
-    h {
-        height: 50px;
+
+    ul{
+        font-size: 15px;
+        list-style-type: none;
+        text-align: left;
     }
-    .question{
+
+    li{
+        font-size: 15px;
+        text-align: left;
+    }
+
+    h1 {
+        width: 500px;
+    }
+
+    .question {
         height: 150px;
     }
+
     button {
         max-width: 200px;
         font-size: 25px;
@@ -45,113 +60,24 @@
         cursor: pointer;
         border-radius: 8px;
     }
-    
-    .ButtonCont {
+
+    .buttonCont {
         height: 250px;
     }
-    
-    .toggle {
-        position : relative ;
-        display : inline-block;
-        top: 1px; 
-        left: 1px;
-        width : 50px;
-        height : 25px;
-        background-color: DarkSlateGray;
-        border-radius: 30px;
-        border: 2px solid gray;
-        cursor: pointer;
-    }
-    .toggle:after {
-        content: '';
-        position: absolute;
-        width: 23px;
-        height: 23px;
-        background-color: Sienna;
-        border-radius: 50%;
-        background-color: gray;
-        top: 1px; 
-        left: 1px;
-        transition:  all 0.5s;
-        cursor: pointer;
-    }
-    
-    .checkbox:checked + .toggle::after {
-        left : 26px; 
-    }
-     
-    .checkbox:checked + .toggle {
-        background-color: DarkSalmon;
-    }
-    
-    .checkbox { 
-        display : none;
-    }    
 
-@media(min-width: 320) AND (max-width: 768){
-    .BG {
-        background-image:  linear-gradient(to bottom right, CadetBlue, DarkSlateGrey);
-        background-size: cover;
-        background-attachment: fixed;
-        align-items: center;
-    }
-    
-    .light-theme {
-        background-image:  linear-gradient(to bottom right, LightSalmon, Sienna);    
-        background-size: cover;
-        background-attachment: fixed;
-        align-items: center;
-    }
-    
-    .Main {
-        height: 200px;
-        width: 250px;
-        display: flex;
-        margin: 0 auto;
-        text-align: center;
-        background-color: ghostwhite;
-        border-radius: 10%;
-    }
-    p {
-        font-size: 10px;
-        margin: 20px;
-        width: 250px;
-        height: 25px;
-    }
-    h {
-        height: 25px;
-    }
-    .question{
-        height: 100px;
-    }
-    button {
-        max-width: 75px;
-        font-size: 10px;
-        text-align: center;
-        width: 75px;
-        align-items: center;
-        margin: 10px;
-        background-color: DarkSlateGray;
-        color: ghostwhite;
-        cursor: pointer;
-    }
-    
-    .ButtonCont {
-        height: 100px;
-    }
-    
     .toggle {
-        position : relative ;
-        display : inline-block;
-        top: 1px; 
+        position: relative;
+        display: inline-block;
+        top: 1px;
         left: 1px;
-        width : 50px;
-        height : 25px;
+        width: 50px;
+        height: 25px;
         background-color: DarkSlateGray;
         border-radius: 30px;
         border: 2px solid gray;
         cursor: pointer;
     }
+
     .toggle:after {
         content: '';
         position: absolute;
@@ -160,21 +86,127 @@
         background-color: Sienna;
         border-radius: 50%;
         background-color: gray;
-        top: 1px; 
+        top: 1px;
         left: 1px;
-        transition:  all 0.5s;
+        transition: all 0.5s;
         cursor: pointer;
     }
-    
-    .checkbox:checked + .toggle::after {
-        left : 26px; 
+
+    .checkbox:checked+.toggle::after {
+        left: 26px;
     }
-     
-    .checkbox:checked + .toggle {
+
+    .checkbox:checked+.toggle {
         background-color: DarkSalmon;
     }
-    
-    .checkbox { 
-        display : none;
+
+    .checkbox {
+        display: none;
     }
-}
+
+    @media(min-width: 320) AND (max-width: 768) {
+        .BG {
+            background-image: linear-gradient(to bottom right, CadetBlue, DarkSlateGrey);
+            background-size: cover;
+            background-attachment: fixed;
+            align-items: center;
+        }
+
+        .light-theme {
+            background-image: linear-gradient(to bottom right, LightSalmon, Sienna);
+            background-size: cover;
+            background-attachment: fixed;
+            align-items: center;
+        }
+
+        .Main {
+            height: 225px;
+            width: 250px;
+            display: flex;
+            margin: 0 auto;
+            text-align: center;
+            background-color: ghostwhite;
+            border-radius: 10%;
+        }
+
+        p {
+            font-size: 10px;
+            margin: 20px;
+            width: 250px;
+            height: 25px;
+        }
+
+        ul{
+            font-size: 8px;
+            list-style-type: none;
+            text-align: left;
+        }
+    
+        li{
+            font-size: 8px;
+            text-align: left;
+        }
+        
+        h1 {
+            width: 250px;
+        }
+
+        .question {
+            height: 100px;
+        }
+
+        button {
+            max-width: 75px;
+            font-size: 10px;
+            text-align: center;
+            width: 75px;
+            align-items: center;
+            margin: 10px;
+            background-color: DarkSlateGray;
+            color: ghostwhite;
+            cursor: pointer;
+        }
+
+        .buttonCont {
+            height: 100px;
+        }
+
+        .toggle {
+            position: relative;
+            display: inline-block;
+            top: 1px;
+            left: 1px;
+            width: 50px;
+            height: 25px;
+            background-color: DarkSlateGray;
+            border-radius: 30px;
+            border: 2px solid gray;
+            cursor: pointer;
+        }
+
+        .toggle:after {
+            content: '';
+            position: absolute;
+            width: 23px;
+            height: 23px;
+            background-color: Sienna;
+            border-radius: 50%;
+            background-color: gray;
+            top: 1px;
+            left: 1px;
+            transition: all 0.5s;
+            cursor: pointer;
+        }
+
+        .checkbox:checked+.toggle::after {
+            left: 26px;
+        }
+
+        .checkbox:checked+.toggle {
+            background-color: DarkSalmon;
+        }
+
+        .checkbox {
+            display: none;
+        }
+    }

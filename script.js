@@ -4,6 +4,10 @@ let clickcount =0;
 let RghtAnswers = 0;
 let tick=10;
 
+let bgcolor = dark;
+let complChecked = "Easy";
+let colorSelCompl = "teal";
+
 function Replay(){
     localStorage.removeItem("numberOfQuest");
     localStorage.removeItem("Complex");
@@ -11,24 +15,36 @@ function Replay(){
     location.reload();
 }
 
+function butAnswers(){
+    let answers = document.createElement("button");
+    answers.style.backgroundColor = bgcolor; 
+    answers.textContent = "Answers";
+    answers.id = "answers";
+    answers.onclick = function Answers(){makeAnswers();};  
+    buttonCont.appendChild(answers);
+}
+
+
 function itsFinish(){ 
     localStorage.removeItem("numberOfQuest");
     for(let i=0;i<4;i++){
         buttons[i].hidden = true;
     } 
-    Qnumber.textContent = "Finish!";
+    qnumber.textContent = "Finish!";
     quest.textContent = "Right answers = "+RghtAnswers.toFixed();
     let replayBut = document.createElement("button");
     replayBut.textContent = "Replay"; 
+    replayBut.id = "Replay"; 
     replayBut.style.backgroundColor = bgcolor; 
-    ButtonCont.appendChild(replayBut);
+    buttonCont.appendChild(replayBut);
     replayBut.onclick = function ReplayQuiz(){Replay();};  
+    butAnswers();
     stopTimer();
     removeBut();
 }
 
 function itsNotFinish(){
-    Qnumber.textContent = "Question "+(numberOfQuest+1)+"/"+questions.length;
+    qnumber.textContent = "Question "+(numberOfQuest+1)+"/"+questions.length;
     if(countRight>1){
         quest.textContent = questions[numberOfQuest].question+"The question has several answers.";
     }
@@ -87,7 +103,7 @@ function nextBut(){
     but.onclick = function Next(){ButtonText();removeBut();};
     but.id = "next";
     but.style.backgroundColor = bgcolor; 
-    ButtonCont.appendChild(but);
+    buttonCont.appendChild(but);
 }
 
 function CheckAnswer(number){

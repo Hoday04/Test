@@ -7,6 +7,7 @@ function Timer(){
         }
         else{
             if(numberOfQuest===5){
+                document.getElementById("progress").value+=(100/questions.length);
                 stopTimer();
                 numberOfQuest++;
                 ButtonText();
@@ -16,6 +17,7 @@ function Timer(){
                 ClearBut();
                 ButtonText();
             }
+            document.getElementById("progress").value+=(100/questions.length);
         }
         timer.textContent = tick;
     },1000);
